@@ -24,7 +24,7 @@ Cada sección tiene su propia carpeta que contiene un `README.md` con la informa
 * ➡️ **[Socios Clave](./Socios%20Clave/README.md)**
     * *La red de proveedores y socios estratégicos para el negocio.*
 
-* ➡️ **[Segmentación de la competencia](./Segmentación%20de%20la%20competi.../README.md)**
+* ➡️ **[Segmentación de la competencia](./Segmentación%20de%20la%20competición/README.md)**
     * *Análisis de competidores directos e indirectos y nuestra diferenciación.*
 
 * ➡️ **[ODS (Objetivos de Desarrollo Sostenible)](./ODS/README.md)**
