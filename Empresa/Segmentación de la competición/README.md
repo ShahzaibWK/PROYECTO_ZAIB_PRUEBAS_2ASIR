@@ -1,41 +1,31 @@
-# Segmentación de competición
+# Segmento de Clientes
 
-### 1. Ekon ERP - Distribución y logística
+¿Quiénes se beneficiarán más de nuestro producto?
 
-* **Pros:**
-    * Software ERP consolidado en España.
-    * Integración con varios sistemas de terceros.
-    * Experiencia comprobada en múltiples sectores.
-* **Contras:**
-    * Complejo de implementar para pequeñas y medianas empresas (costoso).
-    * No está centrado exclusivamente en la integración de GPS y WMS en tiempo real.
-    * Puede ser menos flexible para personalizaciones.
+Para Connectix, los clientes serían empresas que tienen:
+* **Pequeñas y medianas empresas logísticas**
+    * Con flotas de vehículos propios.
+    * Que usan ERP y WMS, pero sus sistemas no están conectados.
+* **Empresas que quieren digitalizar sus procesos logísticos**
+    * Reducir errores de inventario.
+    * Mejorar coordinación entre transporte, almacén y administración.
 
-### 2. ControlT - Integración de sistemas de logística
+### Sectores específicos
 
-* **Pros:**
-    * Especializado en la integración de datos de transporte y almacén.
-    * Permite un control centralizado tipo "torre de control".
-    * Enfoque en visibilidad de procesos.
-* **Contras:**
-    * Orientado más a grandes empresas.
-    * No incluye módulos propios de ERP o gestión de inventario.
-    * Curva de aprendizaje para usuarios no técnicos.
+* Distribuidores de productos alimenticios, farmacéuticos, retail, ecommerce.
+* Empresas con entrega directa al cliente final (last mile delivery).
 
-### 3. ShipStation / Shiptify
+### Empresas reales que podrian utilizar nuestro producto:
 
-* **Pros:**
-    * Optimiza la planificación de rutas y gestión de envíos.
-    * Compatible con múltiples transportistas y canales de venta (e-commerce).
-    * Fácil de usar y con dashboards visuales.
-* **Contras:**
-    * Orientado a e-commerce y transporte de paquetería ligera.
-    * No integra ERP de forma nativa.
-    * Seguridad de datos depende de la nube.
-
-### Resumen diferencial de Connectix
-
-* Digitaliza procesos conectando GPS, ERP y WMS en tiempo real, especialmente pensado para pymes.
-* Servidores locales y ciberseguridad.
-* Más flexible y asequible para empresas pequeñas.
-* Mayor control de datos y adaptación que Shiptify o ShipStation.
+1.  **Grupo Caliche**
+    * **Sector:** Transporte de mercancías por carretera.
+    * **Ubicación:** Valencia, Almería, Murcia y Barcelona.
+    * **Necesidad potencial:** Integrar datos de rutas, pedidos y stock para mejorar la coordinación.
+2.  **Globaltrans Toledo**
+    * **Sector:** Transporte urgente de paquetería.
+    * **Ubicación:** Toledo.
+    * **Necesidad potencial:** Sincronizar información de entregas y stock en tiempo real.
+3.  **Northwood Dicepa SL**
+    * **Sector:** Fabricación de papel reciclado.
+    * **Ubicación:** Enate, Huesca.
+    * **Necesidad potencial:** Integrar datos de producción, logística y ventas para optimizar procesos.

@@ -2,7 +2,7 @@
   <img src="imágenes/logo.png" alt="Logo Connectix" width="300"/>
 </p>
 
-# Connectix: Sistema de Integración Logística Inteligente
+# Connectix – Conecta. Optimiza. Avanza
 
 Connectix es un proyecto que desarrolla un **sistema local de integración inteligente** diseñado para digitalizar y sincronizar los procesos logísticos de pequeñas y medianas empresas. El sistema actúa como un "puente" que conecta los datos del GPS de los vehículos, el ERP empresarial y el sistema de almacén (WMS) sin depender de la nube, unificando el flujo de información y reduciendo errores operativos.
 
