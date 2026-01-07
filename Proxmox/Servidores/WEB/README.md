@@ -123,9 +123,9 @@ Se definen los parámetros generales del sitio web:
 Tras completar este proceso, el CMS WordPress queda. totalmente operativo y accesible desde la red interna.
 ![](../../../imágenes/WEB/web_12.png)
 
-## 5.5. Configuración de Dominio Propio y Acceso Seguro (SSL)
+## 5.5. Configuración de Dominio Propio
 
-Una vez instalado WordPress, se realizó una configuración avanzada para permitir el acceso mediante el dominio `https://www.connectix.es` (eliminando la necesidad de escribir `/wordpress` en la URL) y solucionar problemas de rutas con plugins.
+Una vez instalado WordPress, se realizó una configuración avanzada para permitir el acceso mediante el dominio `www.connectix.es` (eliminando la necesidad de escribir `/wordpress` en la URL) y solucionar problemas de rutas con plugins.
 
 ### 1. Resolución de Nombres (Cliente y Servidor)
 
@@ -133,7 +133,7 @@ Como el dominio no es público, se simuló la resolución DNS en el cliente (Win
 
 **A. Archivo Hosts (Windows):**
 Se modificó el archivo `C:\Windows\System32\drivers\etc\hosts` para apuntar el dominio a la IP del servidor Proxmox.
-*Explicación:* Esto "engaña" al navegador para que sepa que `www.connectix.es` corresponde a nuestro servidor.
+Esto "engaña" al navegador para que sepa que `www.connectix.es` corresponde a nuestro servidor.
 
 ```powershell
 172.16.204.138 www.connectix.es connectix.es
@@ -142,7 +142,7 @@ Se modificó el archivo `C:\Windows\System32\drivers\etc\hosts` para apuntar el 
 
 **B. Redirección de Puertos (NAT en Proxmox):**
 En el nodo Proxmox, se configuraron reglas de `iptables` para redirigir el tráfico Web (80) y SSL (443) hacia la máquina virtual (`192.168.18.10`).
-*Explicación:* Permite que las peticiones externas lleguen a la VM interna de forma transparente.
+Permite que las peticiones externas lleguen a la VM interna de forma transparente.
 
 ```bash
 # Redirección de puertos 80 y 443 a la IP de la VM
@@ -168,8 +168,7 @@ DocumentRoot "/opt/lampp/htdocs/wordpress"
 
 Se editó el archivo `wp-config.php` para definir la nueva identidad del sitio y permitir la gestión de archivos.
 
-**Código añadido:**
-*Explicación:* `WP_HOME` fuerza el uso de HTTPS y el dominio correcto. `FS_METHOD` permite instalar plugins sin necesidad de configurar un servidor FTP, escribiendo directamente en disco.
+*Explicación:* `WP_HOME` fuerza el uso de HTTPS y el dominio correcto.
 
 ```php
 define( 'WP_HOME', 'https://www.connectix.es' );
