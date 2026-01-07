@@ -122,3 +122,76 @@ Se definen los parámetros generales del sitio web:
 
 Tras completar este proceso, el CMS WordPress queda. totalmente operativo y accesible desde la red interna.
 ![](../../../imágenes/WEB/web_12.png)
+
+## 5.5. Configuración de Dominio Propio y Acceso Seguro (SSL)
+
+Una vez instalado WordPress, se realizó una configuración avanzada para permitir el acceso mediante el dominio `https://www.connectix.es` (eliminando la necesidad de escribir `/wordpress` en la URL) y solucionar problemas de rutas con plugins.
+
+### 1. Resolución de Nombres (Cliente y Servidor)
+
+Como el dominio no es público, se simuló la resolución DNS en el cliente (Windows) y se configuró el enrutamiento en el servidor (Proxmox).
+
+**A. Archivo Hosts (Windows):**
+Se modificó el archivo `C:\Windows\System32\drivers\etc\hosts` para apuntar el dominio a la IP del servidor Proxmox.
+*Explicación:* Esto "engaña" al navegador para que sepa que `www.connectix.es` corresponde a nuestro servidor.
+
+```powershell
+172.16.204.138 www.connectix.es connectix.es
+```
+![](../../../imágenes/WEB/web_14.png)
+
+**B. Redirección de Puertos (NAT en Proxmox):**
+En el nodo Proxmox, se configuraron reglas de `iptables` para redirigir el tráfico Web (80) y SSL (443) hacia la máquina virtual (`192.168.18.10`).
+*Explicación:* Permite que las peticiones externas lleguen a la VM interna de forma transparente.
+
+```bash
+# Redirección de puertos 80 y 443 a la IP de la VM
+iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 80 -j DNAT --to 192.168.18.10:80
+iptables -t nat -A PREROUTING -i vmbr0 -p tcp --dport 443 -j DNAT --to 192.168.18.10:443
+```
+![](../../../imágenes/WEB/web_15.png)
+
+### 2. Configuración del Servidor Web (Apache)
+
+Se modificó la configuración de Apache para servir la web desde la raíz del dominio.
+
+**Archivos modificados:** `/opt/lampp/etc/httpd.conf` y `/opt/lampp/etc/extra/httpd-ssl.conf`.
+*Explicación:* Al cambiar el `DocumentRoot` a `/opt/lampp/htdocs/wordpress`, Apache sirve el contenido directamente al entrar al dominio, sin necesidad de rutas adicionales.
+
+```apache
+DocumentRoot "/opt/lampp/htdocs/wordpress"
+<Directory "/opt/lampp/htdocs/wordpress">
+```
+![](../../../imágenes/WEB/web_16.png)
+
+### 3. Ajustes del Núcleo de WordPress
+
+Se editó el archivo `wp-config.php` para definir la nueva identidad del sitio y permitir la gestión de archivos.
+
+**Código añadido:**
+*Explicación:* `WP_HOME` fuerza el uso de HTTPS y el dominio correcto. `FS_METHOD` permite instalar plugins sin necesidad de configurar un servidor FTP, escribiendo directamente en disco.
+
+```php
+define( 'WP_HOME', 'https://www.connectix.es' );
+define( 'WP_SITEURL', 'https://www.connectix.es' );
+```
+![](../../../imágenes/WEB/web_17.png)
+
+### 4. Solución de Estructura de Archivos (Enlace Simbólico)
+
+Para solucionar errores con plugins de migración (como *All-in-One WP Migration*) que no encontraban la ruta correcta debido al cambio de `DocumentRoot`, se implementó un enlace simbólico.
+
+**Comando ejecutado:**
+*Explicación:* Se crea un "espejo" en `htdocs/wp-content` que redirige automáticamente a `wordpress/wp-content`. Esto satisface tanto a Apache (que mira dentro de wordpress) como a los plugins.
+
+```bash
+# Crear enlace simbólico para unificar rutas
+sudo ln -s /opt/lampp/htdocs/wordpress/wp-content /opt/lampp/htdocs/wp-content
+# Asignar permisos totales (Entorno de desarrollo) para evitar bloqueos
+sudo chmod -R 777 /opt/lampp/htdocs/wordpress/wp-content
+```
+![](../../../imágenes/WEB/web_18.png)
+
+### 5. Verificación
+Y como podemos comprobar en la imagen, hemos accedido a nuestro Wordpress con el enlace que hemos configurado.
+![](../../../imágenes/WEB/web_19.png)
