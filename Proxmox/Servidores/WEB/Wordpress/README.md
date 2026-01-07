@@ -1,6 +1,6 @@
 # Documentación del Proyecto WordPress: Connectix
 
-# 🎨 1. Tema e Introducción
+# 1. Tema e Introducción
 El sitio web ha sido desarrollado utilizando WordPress como CMS. El objetivo es ofrecer una plataforma para la venta de dispositivos de red (Routers, GPS) y servicios de logística.
 
 * **Tema Activo:** Bizora
@@ -9,7 +9,7 @@ El sitio web ha sido desarrollado utilizando WordPress como CMS. El objetivo es 
 
 ---
 
-## 👥 2. Usuarios Creados
+## 2. Usuarios Creados
 Se han configurado diferentes roles para la gestión del sitio:
 
 | Usuario | Rol
