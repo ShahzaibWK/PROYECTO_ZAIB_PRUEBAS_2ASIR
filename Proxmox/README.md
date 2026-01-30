@@ -26,7 +26,7 @@ Proxmox se utiliza comúnmente en:
 
 ---
 
-## 📂 Guías de Documentación de Proxmox
+## Guías de Documentación de Proxmox
 
 Aquí se encuentran las guías detalladas para este proyecto:
 
